@@ -1,0 +1,50 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+fansi::set_knit_hooks(knitr::knit_hooks)
+```
+
+# altrepisode
+
+```{r}
+library(altrepisode)
+
+x <- doubles()
+x[2]
+.Internal(inspect(x))
+
+set.seed(2)
+y <- rnorm(20)
+y
+
+# lazy abs version of y
+abs_y <- lazy_abs(y)
+.Internal(inspect(abs_y))
+
+# grab a single value
+# that does not materialize the data
+abs_y[1]
+.Internal(inspect(abs_y))
+
+# but mean does
+mean(abs_y)
+.Internal(inspect(abs_y))
+
+
+# we can combine both
+abs_x <- lazy_abs(x)
+.Internal(inspect(abs_x))
+
+mean(abs_x)
+.Internal(inspect(abs_x))
+```
